@@ -1,0 +1,11 @@
+<p>Over the years I've flitted many times between using pixels and ems for declaring font sizes in my CSS. One reason (admittedly lame) for not fully embracing ems was that, based on the browser default calculation that <code>16px = 1em</code>, the conversion from fixed design comps to the browser often resulted in having to calculate ridiculous fractions for em values, e.g. <code>23px = 1.4375em</code>.</p>
+<p>This weekend I started a new project and decided that I wanted to fully embrace ems in my code. My first thought was to lean on the old (for the web at least) methodology of converting the base font size to 62.5%, thus resulting in <code>10px = 1em</code>, and therefore no more ridiculous fractions, e.g. <code>23px = 2.3em</code>. Having not made such a declaration in my code for a while, I couldn't remember the exact syntax so I went ahead and Googled it. One of the first results was this great article by <a href="http://filamentgroup.com/lab/how_we_learned_to_leave_body_font_size_alone/">filament group</a>, on the disadvantages of this methodology. The most enlightening thing for me was the potential inconsistencies that result in combining this method with media queries
+
+.font-size(@px: 16) {
+    font-size: (@px / 16) * 1em;
+}
+
+
+inspired by: http://filamentgroup.com/lab/how_we_learned_to_leave_body_font_size_alone/
+
+hat tip: http://www.ifdattic.com/2011/10/19/converting-px-to-ems-with-less/

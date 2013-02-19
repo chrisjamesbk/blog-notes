@@ -1,0 +1,71 @@
+"Mobile web navigation must strike a balance between quick access to a site’s information and unobtrusiveness."
+http://bradfrostweb.com/blog/web/responsive-nav-patterns/
+"Ultimately, mobile navigation should be like a good friend: there when you need them, but cool enough to give you your space. A bad friend is someone who’s not there when you need someone to talk to (when navigation is absent or hard to find), or someone who’s obnoxious because they’re always around and taking up space (dude, get off my couch). Finding the balance between accessible navigation and mobile screen real estate is an art that we’re all trying to sort out."
+
+* Top Nav or “Do Nothing” Approach
+- Height matters in mobile. As Luke’s book explains, content-first, nav-second is preferred for mobile web experiences. You want to get the users to the meat-and-potatoes content as quickly as possible. That means getting the navigation out of user’s way so they can focus on the core information on the page.
+
+* The Footer Anchor
+- This clever solution keeps the nav list at the footer of the site, while the header contains a simple anchor link pointing to the footer nav. This approach clears up a lot of room for the core content while still providing quick access to the navigation.
+- Not elegant - A jarring jump, while awesomely practical, isn’t the elegant interaction mobile users have gotten used to from interacting with those highly-polished native apps
+
+* The Select Menu
+- Transform a list of links into a select menu for small screens
+- Ugly - select menus are a pain in the ass to style
+
+- The Toggle
+- This is basically what we do now with the category and profile dropdown menus
+
+* The Left Nav Flyout
+- Facebook popularized a left navigation for mobile that’s quite unique. The nav is accessed by a menu icon, which reveals a tray that slides in from the left and moves the main content over to the right.
+- this approach provides a lot of space to expand
+- Don't forget progressive enhancement: http://stephanierieger.com/a-plea-for-progressive-enhancement/ As Stephanie Rieger pointed out, the Obama site navigation broke on everything but the most sophisticated devices.
+- this method is quite unique to mobile and doesn’t necessarily scale up to large screens easily
+- Do we need the hint of content on the right? - When I first saw Facebook’s new mobile nav, I actually thought it was broken. Keeping a hint of the content on the right seems a bit weird to me, but this is all personal preference.
+
+* The Footer-Only
+- Difficult to Discover & Access
+
+* The “Hide N’ Cry”
+- By removing the nav for small screens, you free up a lot of space! But that comes at a cost…
+
+* Pull Down for Navigation http://inspectelement.com/tutorials/pull-down-for-navigation-a-responsive-solution/
+- Potentially confusing- Mobile users are used to pulling down the top of the page to refresh a list of content items, not to reveal a navigation
+- Explicit Instruction Required- you have to explicitly tell the user to pull down to reveal the nav
+
+
+http://bradfrostweb.com/blog/web/complex-navigation-patterns-for-responsive-design/
+"What are your experience’s key sections? Where are people spending most of their time? Do you really need your privacy policy in your primary navigation? Focus. Use mobile’s lack of screen real estate to cut through political bullshit (“But I want to be in the nav too!”) and strip away dead weight. Your users will thank you."
+"if you have a zillion sections and pages, prioritize search. A search form is an effective way of getting users to where they need to go without having to wade through fifeteen levels of navigation just to get there."
+
+* The Multi-Toggle
+- The multi-toggle is basically just nested accordions.
+- users can quickly scan parent categories before making a decision to go to the next level
+
+* The Ol’ Right-to-Left
+- Instead of sub-nav items appearing underneath the parent category like the multi-toggle, the next level of navigation is offscreen to the right and animates in when requested
+- Animation performance varies greatly across different devices and platforms.
+- Both case studies listed no longer do this. Must be a maintainability nightmare.
+
+* The ‘Skip the Sub-Nav’
+- Sub-navigation typically includes items that are also included on the parent category’s landing page. Because that content is accessible on the landing pages, it’s perfectly viable to simply take small screen users straight to the landing page and let them make their next move from there.
+- Context specific navigation, e.g. only show sub-categories on category pages
+- Having to go to an entirely separate page isn’t terribly efficient for quick navigation.
+
+* Priority+
+- Show less important links with a "+ more" button
+
+
+Wonderbread
+https://www.dropbox.com/s/7w3fjpexkepyw9k/Wonderbread.pdf
+
+
+http://www.obox-design.com/view_item.cfm/title/mobile-navigation-patterns
+http://www.lukew.com/ff/entry.asp?1514
+
+* Gallerys
+http://inspired-ui.com/
+http://www.mobiletuxedo.com/category/ui-patterns/
+http://www.mobiledesignpatterngallery.com/mobile-patterns.php
+
+http://thegodfounder.com/

@@ -1,0 +1,49 @@
+<p>I'll admit, I'm not the most cutting edge technologist in the world. I rarely get overexcited about a new technology launch, and prefer a more pragmatic adoption course, whereby I allow others to help iron out bugs and create best practices. And while we're being honest, I can sometimes be a little bit averse to change (it feels good to have that one off my chest!)</p>
+<p>One thing that has been a constant since I started web development is my text editor of choice - <a href="http://macromates.com/">TextMate</a>. I was recommended it when starting out, and I'd never had too much of a problem with it. I was able to customize it to my liking, and although there were a few minor annoyances (like how the drawer would only refresh once you focussed on the application), I saw no real reason to change. Even when TextMate 2 was released last summer, I steadfastly carried on with my current version.</p>
+<p>You might be surprised to learn, then, that I'm writing this blog post in <a href="http://www.sublimetext.com/">Sublime Text 2</a> (ST2). I've had it installed for a week, and quite frankly, there is no going back. Hell, I might even give the newly-in-beta ST3 a try (woah there!). So what happened? I've had a few fellow devs try to convince me over the past year or two, that ST2 was "the way forward", and although I am stubborn (see above), I've been tempted to give it a try for a while. However, the tipping point came when work decided to purchase a group license for the software. Suddenly, there was no barrier for entry. Why not just give it a try, I thought to myself. If I don't like it, good old TextMate will still be there for me... So I downloaded and installed the software. I enlisted a friend, and ST2 veteran to give me a walkthough and a few quick tips - even with software as basic as a text editor, there are always quirks and best practices that are easier to learn from someone else, than to have to figure out for yourself.</p>
+<p>I've outlined below the setup procedure and preferences that I've employed, in case anyone else is looking to make the change. And yes, I would encourage you to try ST2 - you'll see just by setting up the application just how much more powerful it is than TextMate, and how it can enhance your workflow. I don't regret the TextMate years, but I'm excited for the future. The future is ST2 (or 3!).</p>
+<h2>Sublime Text 2 Setup</h2>
+<p>This is how my buddy <a href="https://twitter.com/EasierLikeThis">@EasierLikeThis</a> suggested I setup ST2. I thank him for his wiseness and powers of persuasion. However, Ive only just started using ST2, so my preferences will most likely change as I get used to the application. And your preferences will most likely be different too. But this is a good starting point.</p>
+<ol>
+    <li>Purchase, download and install <a href="http://www.sublimetext.com/">Sublime Text 2</a>.</li>
+    <li>You can save each project you are working on in ST2, and easily switch between projects using the <code>CMD + CTRL + P</code> shortcut. To save a project, simply drag the project directory onto the ST2 dock icon. Then goto Project > Save Project. Repeat as appropriate.</li>
+    <li>You may wish to exclude certain files from your projects (e.g. cached files, packed css). Goto Project > Edit Project, which opens up the saved <code>.sublime-project</code> file. Edit the file to look something like this:
+        <pre>
+{
+    "folders":
+    [
+        {
+            "path": "/Users/chrisjames/Dropbox/blog-notes",
+            "folder_exclude_patterns": ["bin", "cache", "packed"]
+        }
+    ]
+}</pre></li>
+    <li>Next you will want to enable Package Control, and install some of the powerful ST2 plugins. To install Package Control, follow the directions at <a href="http://wbond.net/sublime_packages/package_control">wbond.net</a>. Note that pressing <code>CTRL + ~</code> brings up the Sublime console. Simply paste in the code from wbond.net and restart ST2.<br/>To install new packages, press <code>CMD + SHIFT + P</code> and search for "Package Control: Install Package". Now search for the package that you want to install. I recommend the following packages, although they may not be appropriate to your workflow:
+        <ul>
+            <li>PHP-Twig - Twig syntax highlighting</li>
+            <li>Surround - highlight word and insert surrounding [], etc tags</li>
+            <li>Trailing Spaces - highlight trailing spaces and delete them in a flash</li>
+            <li>LESS - LESS syntax highlighting</li>
+            <li>GitGutter - See git diffs in drawer</li>
+        </ul>
+    </li>
+    <li>You may also wish to update your ST2 default settings. For example, by default, ST2 does NOT translate tabs to spaces. Go to Sublime Text 2 > Preferences > Settings - Default. I changed the line relating to tabs/spaces to <code>"translate_tabs_to_spaces": true,</code>.<br/>You should also change your User-specific settings. This way, you will not lose your settings if you upgrade ST2. Go to Sublime Text 2 > Preferences > Settings - User. Edit the file to look something like this:
+        <pre>
+{
+    "translate_tabs_to_spaces": true
+}</pre>
+    </li>
+    <li>Finally, you should configure ST2 to play nice with Terminal. If you follow these steps, you will then be able to open a file in ST2 directly from Terminal with the command <code>$ subl path/to/file/file.name</code><br/>In terminal:
+        <pre>
+$ ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+// but where ~/bin/subl can be replaced by any bin location, e.g. /usr/local/bin/subl</pre>
+    </li>
+</ul>
+<h2>Useful ST2 Shortcuts</h2>
+<ul>
+    <li><code>CMD + F</code> Search the current file</li>
+    <li><code>CMD + SHIFT + F</code> Search the entire project</li>
+    <li><code>CMD + T</code> Search the entire project for file names</li>
+</ul>
+<p>And one more tip: you can preview files (without creating a new tab) by accessing them with a single click. Double clicking will open the file for editing.</p>
+

@@ -1,0 +1,63 @@
+<p>As I've mentioned before, my preferred solution for web hosting is <a href="http://www.webfaction.com?affiliate=chrisjames03">Webfaction</a>, and I couldn't be happier. The control panel is easy to use, full shell access with SSH is a default, it's quick and easy to set up new domains and apps (for example, creating a wordpress app takes literally seconds), the customer service has been great and the price is right.</p>
+<p>I recently discovered that WebFaction also plays nice with GitHub, although it takes a little bit of setting up. What I wanted to do was to clone a GitHub repo straight onto my Webfaction server, and to then be able to pull any changes to the repo straight across. This article guides you through the steps I needed to take, from the generation of a new SSH key through to cloning and updating my repo. I borrowed heavily from <a href="https://help.github.com/articles/generating-ssh-keys">this guide from github:help</a>.</p>
+<pre class="command-line">
+# login to the Webfaction shell with SSH
+
+$ cd ~/.ssh
+# move to the .ssh directory in the root of your server
+
+$ ls
+# lists all the subdirectories
+
+$ mkdir key_backup
+# makes a key_backup subdirectory
+
+$ cp id_dsa* key_backup
+# copies the id_dsa keypair into key_backup
+# note: you might have an id_rsa keypair instead of id_dsa. change the command as appropriate.
+
+$ rm id_dsa*
+# deletes the id_dsa keypair
+
+$ ssh-keygen -t rsa -C "your-username@web122.webfaction.com"
+# creates a new ssh key with your webfaction email
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/chrisjames03/.ssh/id_rsa): [press return]
+Enter passphrase (empty for no passphrase): [enter passphrase]
+Enter same passphrase again: [and again]
+Your identification has been saved in /home/your-username/.ssh/id_rsa.
+Your public key has been saved in /home/your-username/.ssh/id_rsa.pub.
+The key fingerprint is:
+aa:00:1a:1a:1a:a1:1a:1a:aa:aa:a1:1a:1a:11:1a:11 your-username@web122.webfaction.com
+
+$ vi id_rsa.pub
+# opens the id_rsa.pub keypair with vim
+# copy the key, making sure to select all characters and not add/remove spaces
+</pre>
+<p>Now add your SSH key to Github. See the steps in <a href="https://help.github.com/articles/generating-ssh-keys">Step 4</a> of this handy guide.</p>
+<p>That <em>should</em> be it! Now it's time to clone a GitHub repository into your Webfaction webapp. You will need to create the app in your Webfaction control panel before proceeding with the next step.</p>
+<p>Note that <code>git</code> is <a href="http://docs.webfaction.com/software/git.html">already installed</a> on your Webfaction server (another win!). So unless you plan on hosting your git repo's on your server, it is unnecessary to install the git web application.</p>
+<pre class="command-line">
+$ cd ../webapps/nameofwebapp/
+# change directory to your webapp
+
+$ git clone git@github.com:github-username/github-repo.git ./
+# clones your github repo into the webapp directory at the root level (not a subdirectory)
+Cloning into ....
+Enter passphrase for key '/home/chrisjames03/.ssh/id_rsa': [see earlier]
+remote: Counting objects: 105, done.
+remote: Compressing objects: 100% (70/70), done.
+remote: Total 105 (delta 37), reused 89 (delta 24)
+Receiving objects: 100% (105/105), 73.19 KiB, done.
+Resolving deltas: 100% (37/37), done.
+
+$ ls
+# check to see if it worked (it did)
+_  404.html  favicon.ico  humans.txt  index.html README.md  robots.txt
+</pre>
+<p>Now that you have successfully cloned your GitHub repo onto your Webfaction server, you will need to keep it up-to-date as and when you commit changes...</p>
+<pre class="command-line">
+$ git pull origin
+# pulls your latest commits to your repo, onto your server
+Enter passphrase for key '/home/chrisjames03/.ssh/id_rsa': [see earlier]
+</pre>

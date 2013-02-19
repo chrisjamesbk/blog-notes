@@ -1,0 +1,16 @@
+http://www.markboulton.co.uk/journal/theinbetween
+http://www.jordanm.co.uk/post/42698080503/there-is-no-breakpoint
+http://csswizardry.com/2013/02/responsive-grid-systems-a-solution/
+
+Thanks Derek, great article.
+
+Here's my simplified philosophy on this:
+“Perhaps the major breakpoints should only deal with major shifts in layout and typography and the unique minor breakpoints should apply to components when they start to break under certain viewport conditions.”
+
+What we can do a much better job with is the major breakpoints. I'm still not sure if it would work better with fixed break points across all pages (I don't think so), custom break points for each page (whose layout is significantly different, e.g. feed, grids, join, friends, account pages, etc) or using a responsive grid which would be positioned somewhere between those two ideas. 
+
+What I have been doing is using custom breakpoints depending on the content (see the layout less modules in /css/layout) and whil this works I feel it's a bit messy and probably will lead to maintenance issues down the line.
+
+I read this really great article (http://csswizardry.com/2013/02/responsive-grid-systems-a-solution/) on responsive grids and I feel like some kind of implementation like that would be the best solution. I'm gonna play around with bringing some of these ideas into how we currently do layouts and see if I can find a solution I like.
+
+If anyone has any further insight/opinions on this, speak up. I think we need to come up with a team-wide solution that we all agree on and can use practically and consistently, especially as there is a lot of focus on mobile right now.

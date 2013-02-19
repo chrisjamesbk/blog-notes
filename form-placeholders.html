@@ -1,0 +1,33 @@
+Cross Browser Form Placeholder Text
+
+Placeholder element, html5, etc etc
+
+// cross-browser placeholder text
+if(!Modernizr.input.placeholder){
+    var textBox = $('input[type="text"], input[type="password"]');
+    textBox.each(function() {
+        var self = $(this);
+        var id = self.attr('id');
+        self.val(self.attr('placeholder'));
+        self.on('focus', function() {
+            var self = $(this);
+            if(self.val() == self.attr('placeholder')) {
+                self.val('');
+            }
+        });
+        self.on('blur', function() {
+            var self = $(this);
+            if(self.val() == '') {
+                self.val(self.attr('placeholder'));
+            }
+        });
+    });
+}
+
+But we had a problem with users having trouble with logging in. One theory we had was that users were getting confused where we had replaced the plceholder text with a form value. Particularly with the Password field, where the value 'Password' showed up as '********'. 
+
+Instead, we tried using hidden label elements:
+
+if(!Modernizr.input.placeholder){
+    $('label.is-hidden').removeClass('is-hidden');
+}

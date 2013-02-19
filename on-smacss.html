@@ -1,0 +1,25 @@
+on SMACCS
+
+Earlier this year, I attended a SMACSS workshop in Philadelphia with Jonathon Snook. Snook coined the term SMACSS (Scalable & Modular Architecture for CSS) to describe his guide to structuring front-end code on large projects, although it works equally well on small projects. It's not designed to be a rigid framework, rather a set of useful conventions that are designed to make your front-end code more semantic, consistent, scalable and, well, modular.
+
+The workshop was great. Snook did a great job explaining the concepts behind SMACSS, and then helped as we attempted to apply them to real world examples. I thoroughly recommend the workshops to anyone who might have the chance to attend one.
+
+I was inspired by the workshop to start implementing the ideas and philosophies behind SMACSS as soon as possible. I now have the experience of creating several new smaller projects based on the SMACSS architecture, whilst I am slowly trying to implement the use of SMACSS principles across our team of front-end developers at OpenSky. This has presented further challenges stemming from the fact that we already have a large (and somewhat bloated) codebase to start from. It is also a challenge to convince developers to change their ways, but slowly we are moving in the right direction and my teammates are beginning to get on board.
+
+This post will detail what I see as the key benefits of switching to a SMACSS workflow:
+
+
+
+
+
+
+http://snook.ca/archives/html_and_css/one-module-or-two
+One would think that the purpose of modular CSS is to avoid the repetition of a batch of properties across multiple rules. After all, repetition is just another word for bloat. At least, that’s how we tend to equate the two.
+When thinking about modular CSS, it’s not about the CSS that is modular, it’s about the design that is modular. Most designs are built from design elements that are repeated throughout the interface.
+Just because your menus and your buttons share the same border radius and font size doesn’t mean those styles should be abstracted away into some third class that gets applied to both elements. Taken too far, you’d be left with a single class for each CSS property and, clearly, that’s not practical.
+Modular design is about separating the components of your design such that they can be re-used elsewhere with ease or that they can be altered with ease.
+
+
+http://laurakalbag.com/smacss-scalable-and-modular-architecture-for-css/
+This is the exact opposite of what frameworks do. Frameworks tend to do the thinking for you, and encourage lazy blanket usage (perhaps not intentionally, but that’s what they tend to result in.) Jonathan teaches you the background that you need in order to make your own informed decisions.
+

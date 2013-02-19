@@ -1,0 +1,37 @@
+I recently ran into the problem in responsive design, where you have a single click handler that should trigger two distinct actions depending on screen width.
+
+Using .off() to switch between events of a single handler.
+
+Above 400px width, hover, below 400px, click.
+
+<pre>
+// set variable
+var isSmallScreen = false;
+// determine which function to call on load
+if ($(window).width() < 500) {
+    $(‘.header-top’).on(‘click’, ‘.header-member a’, smallScreenAction);
+    isSmallScreen = true;
+} else {
+    $(‘.header-top’).on(‘click’, ‘.header-member a’, wideScreenAction);
+}
+// window resize function
+// .on() and .off() are called if the user's screen switches between "smallScreen" and "wideScreen" view
+$(window).resize(function() {
+    var width = $(window).width();
+    if ((width < 500) && (isSmallScreen == false)) {
+        $(‘.header-top’).off(‘click’, ‘.header-member a’, wideScreenAction);
+        $(‘.header-top’).on(‘click’, ‘.header-member a’, smallScreenAction);
+        isSmallScreen = true;
+    } else if ((width >= 500) && (isSmallScreen == true)) {
+        $(‘.header-top’).off(‘click’, ‘.header-member a’, smallScreenAction);
+        $(‘.header-top’).on(‘click’, ‘.header-member a’, wideScreenAction);
+        isSmallScreen = false;
+    }
+});
+function smallScreenAction(e){
+    // mobileAction goes here
+}
+function wideScreenAction(e){
+    // desktopAction goes here
+}
+</pre>

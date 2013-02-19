@@ -1,0 +1,29 @@
+<p>I've been thinking a lot about Wordpress security recently, as I've read a number of stories about Wordpress-driven sites getting hacked. The key to not getting hacked is to be as unpredictable as possible. There are a number of patterns that occur in most Wordpress installs that can make a hackers job that much easier. Here are some key things that anyone builidng with Wordpress should be thinking about:</p>
+<ul>
+    <li>Using an administrator to post content - Use your administrator account for backend work only, especially if you are displaying your username on your site.</li>
+    <li>Don't create an account with the username "admin" - This is the default username, only use it if you <em>want</em> to be hacked.</li>
+    <li>Change the default <code>wp_</code> table prefix - if you don't do this, hackers already know the table names in your database. Change the prefix in the <code>wp-config.php</code> file during the install process.</li>
+    <li>Define unique authentication keys and salts for your site - Generate these at the <a href="https://api.wordpress.org/secret-key/1.1/salt/">Wordpress.org secret-key service</a>, and edit the keys in the <code>wp-config.php</code> file at any time.</li>
+    <li>Keep Wordpress up-to-date - Wordpress core developers are quick to fix bugs and vulnerabilities with regular updates, so if you're version is behind, you are leaving yourself vulnerable.</li>
+    <li>Create difficult passwords - This one is a no-brainer.</li>
+    <li>Do due diligence on any plugins that you choose to use - Many Wordpress plugins are buggy, outdated and house huge security black holes. Choose plugins wisely; make sure that they are recently updated, highly rated and well reviewed. If you are a developer, give the code a scan to make sure that you don't see any issues. Better yet, don't use a plugin when you don't really need it.</li>
+    <li>And remember to keep your plugins updated as well!</li>
+    <li>Delete unused themes - SOURCE?</li>
+</ul>
+
+
+Sources:
+http://www.netmagazine.com/features/20-common-wordpress-mistakes-myths-and-misgivings
+Backup:
+We’ve covered four mistakes that you can avoid in an effort to be more secure. But no system on earth is totally secure so there if the worst happens and you get hacked make sure you’re ready. There are countless ways to restore. Bluehost now offers full restoration points on a daily, weekly and monthly basis. You can also use VaultPress which backs up everything from your content to your themes and more. VaultPress is not free but it’s the absolute best solution out there. Here’s another great free solution: BackWPup.
+
+http://m.netmagazine.com/features/10-simple-ways-secure-your-wordpress-site
+WP-DB Manager is excellent for backing up your entire WordPress site, but it'll also alert you to mySQL vulnerabilities and let you know when parts of your database are publicly accessible.
+
+Always be sure to properly back up the content of your site. In a worst-case scenario, at least keeping backups will allow you to easily restore your site. With WP-DB Manager, you could also use Online Backup for WordPress. The back up the plug-in creates can be stored in your email inbox or on your PC, or you can use the 100MB of free storage space on developer Backup Technology's own secure servers.
+
+http://websynthesis.com/when-to-use-plugins/
+
+More:
+http://www.netmagazine.com/tutorials/protect-your-wordpress-site-htaccess
+http://wpsecure.net/secure-wordpress-advanced/
