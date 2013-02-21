@@ -1,0 +1,42 @@
+https://gist.github.com/wesrice/1924934
+
+<?php 
+
+    // Get the repeater field
+    $repeater = get_field( 'repeater_field_name' );
+
+    // Get a random rows. Change the second parameter in array_rand() to how many rows you want.
+    $random_rows = array_rand( $repeater, 2 );
+
+    // Loop through the random rows if more than one is returned
+    if( is_array( $random_rows ) ){
+
+        foreach( $random_rows as $random_row ){
+
+            // Output data here. Replace sub field names.
+            echo 'Sub Field 1: ' . $repeater[$random_row]['sub_field_1'] . '<br/>';
+            echo 'Sub Field 2: ' . $repeater[$random_row]['sub_field_2'] . '<br/><br/>';
+
+        }
+
+    } else {
+
+        // Output data here. Replace sub field names.
+        echo 'Sub Field 1: ' . $repeater[$random_rows]['sub_field_1'] . '<br/>';
+        echo 'Sub Field 2: ' . $repeater[$random_rows]['sub_field_2'] . '<br/><br/>';
+
+    }
+
+?>
+
+<p>Show a single random image:</p>
+<pre>
+// where the repeater field key is 'images', and the sub-field key is 'image'
+&lt;?php
+    // Get the repeater field
+    $repeater = get_field( 'images' );
+    // Get a random row
+    $random_row = array_rand( $repeater, 1 );
+    // Output data here
+    echo '&lt;img class="banner-img" src="' . $repeater[$random_row]['image'] . '" /&gt;';
+?&gt;</pre>

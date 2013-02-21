@@ -1,0 +1,47 @@
+Target a specific item in a Wordpress Loop
+
+http://wp.smashingmagazine.com/2009/06/10/10-useful-wordpress-loop-hacks/ (#3)
+
+The solution.
+Simply use the following loop instead of your current loop. Don’t forget to insert your ad code on line 6:
+<?php if (have_posts()) : ?>
+<?php $count = 0; ?>
+<?php while (have_posts()) : the_post(); ?>
+<?php $count++; ?>
+  <?php if ($count == 2) : ?>
+          //Paste your ad code here
+          <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+          <?php the_excerpt(); ?>
+   <?php else : ?>
+          <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+          <?php the_excerpt(); ?>
+  <?php endif; ?>
+<?php endwhile; ?>
+<?php endif; ?>
+Code explanation.
+Since the early days of programming, integer variables have been a common operation to use as a counter. This is exactly what I’ve done here: just before the loop starts, a $count variable is created. This variable increases by an increment of 1 with each result returned by the loop.
+Then, you just have to add an if structure (line 5) and see if $count is equal to 2. If it is, it means that the first post has already been returned and we can display the ads.
+
+
+
+How I used it:
+
+<?php
+    // set count variable
+    $count = 0;
+    // set loop arguments
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => 5
+    );
+    // loop with WP_Query()
+    $query = new WP_Query($args);
+    while($query->have_posts()) : $news_query->the_post();
+    // increase count with each loop iteration
+    $count++;
+?>
+    <article class="carousel-item<?php if ($count != 1) : ?> is-inactive<?php endif; ?>">
+        [...]
+    </article>
+<?php endwhile; ?>
+<?php wp_reset_postdata(); // reset $news_query ?>
