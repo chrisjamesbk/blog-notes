@@ -1,0 +1,34 @@
+How to add menus in Wordpress
+
+in functions.php, register the menu:
+<pre>register_nav_menu('menu-home', 'Homepage navigation menu');</pre>
+
+in Wordpress admin, create the menu:
+Appearances > Menus
+Enter menu name 'menu-home' (see above) > Create Menu
+Match 'Theme Location' to Menu Name > Save
+Add Pages, Categories or custom links to the menu > Save Menu
+
+
+
+in template, create menu:
+<pre>
+&lt;?php
+    $nav_defaults = array(
+        'theme_location'  => 'menu-home',   // displays the nav menu registered above
+        'menu_class'      => 'nav-list',    // changes class of the ul
+        'menu_id'         => '',            // removes the id from the ul
+        'container'       => false          // removes the default div wrapper
+    );
+
+    wp_nav_menu( $nav_defaults );
+?&gt;</pre>
+
+full list of options: http://codex.wordpress.org/Function_Reference/wp_nav_menu
+
+outputs:
+<ul class="nav-list">
+    <li><a href="">Item 1</a></li>
+    <li><a href="">Item 2</a></li>
+    <li><a href="">Item 3</a></li>
+</ul>
