@@ -12,8 +12,9 @@ http://bradfrostweb.com/blog/web/responsive-nav-patterns/
 * The Select Menu
 - Transform a list of links into a select menu for small screens
 - Ugly - select menus are a pain in the ass to style
+- Native overrides, e.g. mobile Safari
 
-- The Toggle
+* The Toggle
 - This is basically what we do now with the category and profile dropdown menus
 
 * The Left Nav Flyout
@@ -27,7 +28,7 @@ http://bradfrostweb.com/blog/web/responsive-nav-patterns/
 - Difficult to Discover & Access
 
 * The “Hide N’ Cry”
-- By removing the nav for small screens, you free up a lot of space! But that comes at a cost…
+- By removing the nav for small screens, you free up a lot of space! But that comes at a cost...
 
 * Pull Down for Navigation http://inspectelement.com/tutorials/pull-down-for-navigation-a-responsive-solution/
 - Potentially confusing- Mobile users are used to pulling down the top of the page to refresh a list of content items, not to reveal a navigation
@@ -55,6 +56,10 @@ http://bradfrostweb.com/blog/web/complex-navigation-patterns-for-responsive-desi
 * Priority+
 - Show less important links with a "+ more" button
 
+* Seperate Pages
+- Top level navigation (e.g. categories) links to separate pages with secondary (e.g. sub-cats) navigation
+- Simple to implement/maintain (fewer moving parts)
+
 
 Wonderbread
 https://www.dropbox.com/s/7w3fjpexkepyw9k/Wonderbread.pdf
@@ -69,3 +74,171 @@ http://www.mobiletuxedo.com/category/ui-patterns/
 http://www.mobiledesignpatterngallery.com/mobile-patterns.php
 
 http://thegodfounder.com/
+
+A bunch of Retail Navigation Patterns documented here:
+http://www.slideshare.net/theresaneil/mobile-retail-navigation-patterns
+
+http://www.mobiledesignpatterngallery.com/mobile-patterns.php
+
+THOUGHTS
+- seperate navigation options on different pages
+- all options always available, but hidden, e.g. LNF
+
+
+CASE STUDIES
+
+Abercrombie
+- seperate mobile site
+- header: nav icon, logo, settings, cart
+- landing page: marketing, top-level category nav, special offers
+- nav icon click = 'left nav flyout' (LNF)
+- drag-to-left has no effect
+- clicking on top-level categories also enables LNF, filtered by category
+- LNF: categories, account, help/about/contact
+- LNF: categories have own LNF page with subcategories
+- LNF: sub-subcategories are shown with accordion
+- product page nav: LNF accessible, category breadcrumb
+
+CALVIN KLEIN
+- seperate mobile site
+- header: logo, search
+- sub-header: home, my account, cart
+- landing page: marketing, top-level category nav, contact, social
+- category pages feature subcategories listed, with sub-subcats shown with accordion
+- product page nav: header (prev/next item, category breadcrumb), footer (recommended products)
+
+CURRYS.CO.UK
+- responsive
+- header: browse, stores, account, cart
+- sub-header: logo, search
+- click on 'browse' shows category nav in footer
+- category nav is multi level, pages slide left to right
+- product page nav: breadcrumb, 'browse' to category menu in footer
+
+GILT
+- mobile site
+- header: top level categories (4) and '+ More' button (fixed = always visible)
+- sub-header: settings, logo, cart (fixed)
+- '+ More' shows remaining categories overlaying content
+- landing page: latest women's sales (first category products immediately on view), category list in footer, my account, about/etc
+- clicking on categories switches products on view
+- settings on separate page
+- product page nav: categories persistent in footer
+
+IKEA
+- mobile site
+- header: logo, search
+- sub-header: home, products, cart, stores
+- landing-page: slideshow, ikea/retail specific links
+- 'products' brings up category list on seperate page
+- clicking on cats/subcats opens new list on seperate page, with breadcrumb
+- product page feels like part of the browse categories experience, as you drill down
+- product page nav: breadcrumb, "more like this" links
+
+LOWE'S
+- mobile site
+- header: nav icon, search (open), logo, account, cart (fixed, except product page)
+- sub-header: toggles on click between search bar (default) and main nav (store, shop, help) (search is fixed, main nav is overlay)
+- landing page: promotions, very visual, footer (social, company links)
+- 'shop' link takes you to list of categories
+- click on categories to open sub-category pages with breadcrumb (only one level back)
+- product page has no additional nav except 'back to top'
+
+MALMAISON
+- responsive
+- header: 'more', login/reg, search (tiny), social (tiny)
+- sub-header: logo, browse (category accordion)
+- 'product page' has the same nav
+
+PATH APP
+- it's an app
+- header: nav icon, logo, friends
+- nav icon shows nav from left
+- friends icon shows friends list from right
+
+REI
+- mobile site
+- header: stores, log in, cart
+- sub-header: logo, search
+- landing page: promo slideshow, 'shop' menu, 'explore' menu (company links)
+- in 'shop', categories shown by accordion
+- category pages are a list of sub-cats
+- browse pages: sort option (visible by default), category list, filters, products list
+- product page nav: all nav except header/sub-header is suppressed, related products in footer
+
+SONY USA
+- responsive?
+- header: logo, menu, search
+- sub-header: social
+- 'menu' - dropdown list of categories (mega menu), click categories/subcats to slide in next level
+- 'Laptops' (lowest category leavel) links to main site, not responsive
+
+USA TODAY
+- mobile site
+- header: logo, day in pictures
+- sub-header: sections, info ticker
+- 'sections' brings up nav as a native select element
+
+ZAPPOS
+- mobile site
+- header: logo, profile, loves, cart
+- sub-header: search
+- refined browse (choose - product type, gender, third option dependent on first two)
+- more like a structured search
+- no list of categories
+
+GUCCI
+- mobile site
+- header: nav icon, logo, search, cart
+- search opens as sub-header
+- nav icon opens/closes category list overlay from left
+- categories on two levels which slide left/right within overlay
+- browse page has filter (native select box)
+
+SVPPLY
+- native app
+- header: page title (feed), @ (mentions), nav icon
+- click on nav icon, reveals nav (you, feed, shop, search)
+- you = profile page
+- feed = home/feed
+- shop = filter by category, categories listed as LNF. subcats show as accordion, act like filters. hide/show categories with slide left/right
+- when viewing product grid, scroll up to show additional popular/price filters
+- filter by location also available in header on browse page
+- offer page nav: simple, back to feed, share, nav icon
+
+
+Primary Questions:
+What are key sections? Where are people spending most of their time? Where do we want people to go? SOCIAL FIRST
+What can we strip away? Free up screen space.
+What needs to always be there? e.g. logo, cart? Logo not necessarily(actually yes, deep links), cart yes
+What nav elements always need to be available, but can be hidden
+Are there nav elements that always need to be present on a specific page? e.g. browse page filters, sub-cat lists
+Start with one/two levels of header open? Immediate access vs screen real estate.
+Fixed header? Back to top link?
+Can we get rid of footer? Do we want to? (adds visual cue that end of page, slim it down, no duplication)
+Simple and maintainable vs. "Wow" factor, everything always available (balance)
+Navigation: on top/overlay (e.g. Gucci)? LNF (e.g. Abercrombie? new page (e.g. ikea)? drop down (e.g sony)?
+What levels of categories do we need to drill down to? (assuming 2 per current site)
+Requests for category sub-nav. Does this need to be done by ajax, per current nav?
+Progressive enhancement - what if javascript is turned off? Do we care?
+Homepage (almost exclusively) for navigation? Or Feed = Home? (would require new page, but easier to maintain as nav cleaner elsewhere?)
+What do we need to accomodate Merchant Portal?
+
+
+Secondary Questions:
+Clever use of colors, e.g. svpply category nav
+Notifications in nav?
+Hide browser chrome/header element as you scroll down
+Pull down to refresh? - expected on the Feed
+Incorporate touch gestures? - nice to have
+Do we need to include credits in main nav? - not mobile
+
+
+Limitations:
+Settings has to be a seperate, native page
+
+- check out Gilt app - carousel-esque
+- can search results be predictive (live search)
+- search in lnf
+- top level = tabs
+

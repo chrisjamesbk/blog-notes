@@ -1,0 +1,108 @@
+smaccs presentation notes
+
+SMACSS Intro
+
+- Scalable and Modular Architecture for CSS
+
+- Jonathon Snook, Shopify, formerly Yahoo, @snookca
+
+
+Say What?
+
+- Not a framework
+- Not a set of fixed rules
+
+- More of a philosophy
+- Guidelines for front end developers to writing better, leaner, more scalable CSS
+- Adaptable - great for teams, individuals, large projects and small
+
+
+Why?
+
+- what is wrong with CSS?
+- nothing inherently
+- CSS gets a bad rap from some developers, it's very different from most programming languages - is it even a programming langauge?
+- and it does have its problems. it's quite inflexible. web changes very quickly. CSS standards struggling to keep up. web developers want to stretch its capabilities to the max. this sometimes results in bad css.
+
+What is bad CSS?
+- bloated, heavy
+- hard to maintain
+- non-semantic, selectors like:
+  .layout_1_2 #blogList .pageitem .statusBar {}
+  .layout_1_2 #blogList .pageitem .statusBar .status {}
+  .layout_1_2 #blogList .pageitem .statusBar .status .status1 {}
+  .layout_1_2 #blogList .pageitem .statusBar .status .status1 a {}
+- hacky, not respecting the cascade, e.g. !important
+
+
+SMACSS to the rescue
+
+Core Principles:
+- semantic naming conventions, naming clarifies intent
+  e.g. .layout-header {}, .tabs {}, .listview {}, .btn {}
+
+- decoupling CSS from HTML
+  - html is for content, css is for presentation
+
+- modularization
+  e.g. .btn {}, .btn-large {}, .btn-small {}, .btn-default {}, .btn-search {}
+  - modules are not context specific
+  <a href="#" class="btn btn-large">Large Button</a>
+  - insert this anywhere in your page and it will be the same
+  - less replication, e.g. same button on home and cart pages: #home a {}, #cart a {}
+  - finding patterns means leaner code
+
+- reduce selector depth
+  bad: #comments .comment .meta .authorname {}
+  good: .comment-author {}
+  CSS is all about the cascade. learning to embrace it, not to fight it.
+  Not context specific - modularity
+  Single class selectors are recommended by Google Page Speed
+
+- single responsibility theory, object oriented principle
+  “A chunk of code should do one thing and one thing only.”
+  e.g. .wrapper - a single, reusable class whose sole job it is to group content
+  e.g. scripts written for individual modules
+  $('.btn').click(function(){
+    $(this).addClass('is-pressed');
+  });
+
+- state-based design
+  e.g. .tab {}, .is-tab-active {}
+  - changes of state are easily identified
+  - likelihood of javascript dependency. states are modified, not inline-styles
+
+
+
+
+- Feels like 'divitis'
+- A few extra elements and class names will add less page weight than bloated CSS
+- Less qualified selectors increase page speed, aid scalability
+- Class names can increase semantics
+
+- Increase the semantic value of a section of HTML and content
+- Decrease the expectation of a specific HTML structure
+
+
+
+Better than a framework
+- SMACSS is the opposite to a framework or boilerplate
+- Frameworks do the thinking for you
+- Inflexible
+- Lots of code you don't need
+- Lots of sites that look the same (I love you Bootstrap, but...)
+
+- SMACSS empowers you to make your own decisions
+- Requires you think think about your code upfront. How to structure it. More efficient. Dramatically increases maintainability.
+
+"With a module-based system, it is important to consider state-based design as applied to each of the modules. When you actively ask yourself “what us the default state,” then you’ll find yourself thinking proactively about progressive enhancement. It also can have you approaching issues slightly differently."
+
+
+Sounds complicated?
+- SMACSS might not be the answer for your project/your team
+- it's hard to implement, especially on exisitng sites
+- pick a naming system in advance, encourages consistency, especially useful as part of a team
+- think in terms of modules
+
+
+- CSS preprocessors (each module has it's own SASS/LESS file, e.g. buttons.less, files compiled before uploading to server, mixins, nesting)
