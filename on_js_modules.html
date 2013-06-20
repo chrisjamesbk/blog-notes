@@ -1,0 +1,117 @@
+tl;dr;
+
+Modularise: write small modules that do only one thing, and compose them together to do more complex stuff.
+
+
+
+
+
+
+
+AMD vs CommonJS
+Why AMD is better, with examples:
+http://blog.millermedeiros.com/amd-is-better-for-the-web-than-commonjs-modules/
+- AMD modules are flexible.
+- Plugin support (extremely useful and powerful).
+- Can load more than just JavaScript files.
+- Path aliases and other advanced config settings to simplify path resolution and dependency listing.
+- Works in the browser without a build (most popular AMD loaders supports this feature).
+- Is asynchronous by nature.
+- Works in current browsers, no need to wait for Harmony.
+- Dependencies are usually listed on the same location making it easy to identify what are the dependencies.
+- Avoid globals by default since modules are wrapped by closures.
+- Can run the same code on both environments by simply using an AMD loader that works on a CJS environment (see r.js and amdefine).
+- It’s being adopted by popular JavaScript libraries like Dojo (1.6+), Mootools (2.0), jQuery (1.7)…
+- Lazy-load scripts if needed.
+
+AMD Example:
+// Path alias to simplify module look-up and file versioning (really important feature):
+// configure RequireJS/curljs paths
+require.config({
+    //set base folder of all dependencies
+    baseUrl : 'js',
+    paths : {
+        //avoid typing long path all the time
+        'foo' : 'lib/lorem-ipsum/dolor/foo',
+        //version file for cache busting
+        'lorem/ipsum' : 'lorem/ipsum-v23'
+    }
+});
+define(['foo/bar', 'lorem/ipsum'], function(bar, ipsum){
+    //this will load 'js/lib/lorem-ipsum/dolor/foo/bar.js'
+    //and 'js/lorem/ipsum-v23.js'
+});
+
+- Don’t enforce a build step during development (even if automatic), one of the beauties of developing JavaScript is that you can simply refresh the browser to see the updates, run the build task only for deployment (combine and minify files to reduce number of requests and increase load performance).
+
+- AMD greatest benefit isn’t being able to load scripts on-demand, as some people may think, the greatest benefit is the increase of the code organization/modularity and also the reduced need for globals/namespacing.
+
+
+Another AMD > CommonJS article:
+http://tagneto.blogspot.com/2011/04/on-inventing-js-module-formats-and.html
+
+
+
+
+
+Resources:
+All about Node Modules, plus resources:
+http://killdream.github.io/2013/06/06/node-modules-to-rule-them-all.html?utm_source=javascriptweekly&utm_medium=email
+
+Moving from jQuery method to an object, intro to prototype:
+http://javascriptplayground.com/blog/2013/06/refactoring-part-2/
+
+Alex Sexton: Deploying js applications, better performance:
+http://alexsexton.com/blog/2013/03/deploying-javascript-applications/
+
+* Writing Modular JavaScript With AMD, CommonJS & ES Harmony
+http://addyosmani.com/writing-modular-js/
+
+
+
+
+jQuery Conference
+
+Alex McPherson:
+https://github.com/alexmcpherson/jqueryTO-talk
+- Leveling up your js applications, intro to modules, MVC, build tools
+
+Alex Sexton
+http://alexsexton.com/talks/depending-on-jquery/#/
+- Depending on jQuery, next time you start an app, download require.js first
+
+Tessa Harmon:
+https://speakerdeck.com/tessaharmon/everything-i-wish-i-had-known-about-building-single-page-apps
+- Building single page apps, modularity, knockout.js, pathjs
+- example app: https://github.com/TessaHarmon/brewskipedia/tree/master/brew-app/app
+- more resources: https://gist.github.com/TessaHarmon/5157013
+
+Sam Breed:
+http://fixing-broken-windows.jit.su/
+- fixing broken windows, modules over plugins, Grunt
+
+Patrick Camacho (Twitter/Crashlytics):
+http://www.slideshare.net/crashlytics/jquery-conf
+- Modules, custom backbone app
+
+Katie Gengler:
+http://codeallday.com/jquery-portland-2013-ember-slides/#/
+- Intro to Ember, with resources
+- Angular vs Ember: http://eviltrout.com/2013/06/15/ember-vs-angular.html
+
+Greg franko:
+http://gregfranko.com/modular-jquery-plugins-talk/
+- modular jQuery plugins, require.js, jQueryUI widget factory, modularity, grunt build
+
+John K Paul:
+http://johnkpaul.github.io/presentations/jqcon/2013/cold-plugins/#/
+- plugins, backbone allows easy plugin reuse
+
+Angelina Fabbro (Mozilla):
+http://afabbro.github.io/jqueryconpdx2013/
+- modular components, keep them concise, decoupled, reusable
+- upcoming: web components
+
+Adam Sontag:
+http://ajpiano.com/jquery-is-a-swiss-army-knife/#1
+- jQuery is still a useful tool
