@@ -1,0 +1,48 @@
+- intro
+-- why?
+-- why me?
+<p>Whilst a responsive design strategy for mobile has always been a focus of the Front End team at OpenSky, it often seemed something of an afterthought... With the release of our iPhone app last fall, and analytics showing that mobile users of Opensky are ever trending upwards (in fact, mobile users account for approximately 50% of our overall traffic), there has been a renewed company wide focus on mobile over the past 12 months.</p>
+<p>A key component to our mobile strategy was a site-wide header and navigation that would enhance the experience of users on all devices, from desktop to mobile and in between. Navigation in particular was a key challenge as we want users to be able to easily explore and discover great products from our catalogue and make connections and engage socially with other users.</p>
+<p>Due to a big focus on the merchant portal earlier this year, I was drafted in to perform the user experience research and design on this project, ably assisted by our super UX director Lesley Fleischman. This post explains some of the considerations we made and helps to clarify why we made the decisions we did.</p>
+<blockquite>
+    <p>Ultimately, mobile navigation should be like a good friend: there when you need them, but cool enough to give you your space. A bad friend is someone who’s not there when you need someone to talk to (when navigation is absent or hard to find), or someone who’s obnoxious because they’re always around and taking up space (dude, get off my couch). Finding the balance between accessible navigation and mobile screen real estate is an art that we’re all trying to sort out.</p>
+    <cite><a href="http://bradfrostweb.com/blog/web/responsive-nav-patterns/">Brad Frost, Responsive Nav Patterns</a></cite>
+</blockquote>
+- research
+-- articles, brad frost, etc
+-- competitors and other web sites
+-- both sites and apps
+<h4>Research</h4>
+<p>The first step of any project involves research into best practices and potential options. Fo this project I was interested in different mobile navigation patterns, and found Brad Frost's articles on <a href="http://bradfrostweb.com/blog/web/responsive-nav-patterns/">responsive</a> <a href="http://bradfrostweb.com/blog/web/complex-navigation-patterns-for-responsive-design/">navigation</a> patterns especially useful. Summary of best patterns...</p>
+<p>I also spent a lot of time researching existing sites and apps, particularly in the retail/ecommerce space, and looking at their navigation patterns and mobile strategy. With each case study, I looked into several different factors to determine how succesful their strategy was:</p>
+<ul>
+    <li>Whether the mobile solution was part of a responsive stretegy or a standalone solution</li>
+    <li>How successful their navigation was in exposing the key content on the site</li>
+    <li>How the navigation patterns changed on different pages of the site (e.g. homepage versus product pages)</li>
+    <li>The use of icons, to determine which icons have become part of the mobile user's lexicon</li>
+    <li>The use of interactional navigation menus and whether they enhanced or detracted from the overall experience</li>
+</ul>
+
+- wireframes
+- prototype
+-- skip photoshop, validate ideas quicker, quicker build process
+- build
+-- single site, not seperate mobile
+-- responsive
+-- mobile first
+-- css
+<p>One of the decisions I made early on was that I wanted mobile to be the focus of this project. To that end, I decided to employ a <a href="">mobile first</a> strategy.
+    -- less, smacss
+    -- css media queries
+-- back button, document.referrer
+<p>To improve the site navigation experience on mobile, we decided to implement a top-level, second-level structure...
+-- left nav flyout
+<h4>Logo Image</h4>
+<p>As we moved into the UAT stage of the project, someone pointed out that the OpenSky logo didn't look "fully round", and on closer inspection we did notice that the edges of the circular logo seemed to be clipped. Although the effect was almost impercitible, I did some quick research and found that this is a <a href="" citation-here>known issue</a> with semi-transparent .png images. I soon determined that using an inline .svg image would mitigate the problem, but would in turn mean that the image wouldn't show up on legacy versions of IE. To solve the problem, I turned to javascript. The following snippet shows detection for inline SVG support, where if it is not supported, and alternative PNG version of the logo is inserted instead.</p>
+<pre>
+if (support) {
+    
+}</pre>
+<h4>Icons</h4>
+<p>As with pretty much all my projects these days, the icons as served as a font file using the CSS @font-face declaration. At OpenSky we use the excellent <a href="">Icomoon App</a> to create a custom icon font, complete with many custom glyphs designed by our design team. Icomoon makes this a sinch, as detailed in this previous post.</p>
+-- 

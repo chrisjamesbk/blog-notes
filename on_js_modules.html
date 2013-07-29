@@ -6,6 +6,100 @@ Modularise: write small modules that do only one thing, and compose them togethe
 
 
 
+Module patterns:
+Beginners guides:
+http://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
+http://www.impressivewebs.com/my-current-javascript-design-pattern/
+
+
+jQuery plugin patterns:
+http://coding.smashingmagazine.com/2011/10/11/essential-jquery-plugin-patterns/
+http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript
+
+http://www.websanova.com/blog/jquery/the-ultimate-guide-to-writing-jquery-plugins#.UeApHGRgaRY
+https://github.com/websanova/boilerplate
+
+
+
+
+Alex Sexton: http://www.slideshare.net/SlexAxton/how-to-manage-large-jquery-apps
+<script>
+    var coolGuyPlugin {
+        init: function(options) {
+            this.options = $.extend(
+                this.options,
+                options
+            );
+
+            this.$elem = $(this);
+            this.eventify();
+        },
+        options: {
+            selector: '#container',
+            direction: 'left',
+            color: '#fff'
+        },
+        eventify: function(lolcatid) {
+            this.$elem.hover(function(){
+                // whatever
+            })
+        }
+    };
+    var myCGP = Object.create(coolGuyPlugin);
+    myCGP.init({color: '#000'});
+</script>
+
+or this:
+http://jquerysbestfriends.com/#slide59
+<script>
+    var orWhateverable = {
+        init: function(options, element) {
+            this.options = $.extend({}, this.options, options);
+            this.$elem = $(elem);
+
+            return this;
+        },
+        options: {
+            selector: '#container',
+            direction: 'left',
+            color: '#fff'
+        },
+        addOrWhatever: function(lolcatid) {
+            this.$elem.hover(function(){
+                // whatever
+            })
+        }
+    };
+
+    $.fn.orWhateverable = function(opts) {
+        return this.each(function(){
+            $.data(this, 'orWhat', Object.create(orWhateverable).init(opts, this));
+        });
+    };
+</script>
+
+
+
+Requirejs on multipage apps:
+http://stackoverflow.com/questions/8081605/requirejs-multiple-main-js
+http://stackoverflow.com/questions/10815454/how-does-requirejs-work-with-multiple-pages-and-partial-views/10816983#10816983
+https://github.com/requirejs/example-multipage
+https://github.com/requirejs/example-multipage-shim (shim needed to load backbone/underscore/etc)
+http://robdodson.me/blog/2012/11/18/a-require-dot-js-multipage-shimmed-site-how-to/
+re ^, this was very useful: https://github.com/robdodson/requirejs-multipage-shim-tutorial
+
+Rob Dodson: "When working with a multi-page site compiling everything into one file is probably not a good idea because you have no guarantee that the user will visit every page. Thus the ideal scenario is one in which each page has its own main file that contains page-specific instructions and then a separate (hopefully cached) file which contains all of the commonly used js libs. For example if you have a page called About and a page called Contact you would have main-about.js and main-contact.js. Let’s say main-about.js and main-contact.js both require 'jquery' and 'underscore'. We wouldn’t want to compile jquery and underscore into each main file because then we’re creating unnecessary bloat. Instead we should create a common.js file which contains jquery and underscore and we’ll make sure that this file loads before any of our main files."
+
+
+TO READ: http://rmurphey.com/blog/2009/10/15/using-objects-to-organize-your-code/
+http://www.sitepoint.com/understanding-requirejs-for-effective-javascript-module-loading/
+
+
+
+on require-jquery.js:
+via requirejs.org: Previously, we've been pointing to an example using a special require-jquery file, which consisted of require.js and jQuery concatenated. This is no longer the recommended way to use jQuery with require.js, but if you're looking for the (no longer maintained) example, you can find require-jquery here.
+
+
 
 
 AMD vs CommonJS
@@ -66,6 +160,9 @@ http://alexsexton.com/blog/2013/03/deploying-javascript-applications/
 
 * Writing Modular JavaScript With AMD, CommonJS & ES Harmony
 http://addyosmani.com/writing-modular-js/
+
+Pretty good intro to require.js slides:
+http://www.tagneto.org/talks/jQueryRequireJS/jQueryRequireJS.pdf
 
 
 
