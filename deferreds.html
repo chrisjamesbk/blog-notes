@@ -1,0 +1,76 @@
+<p>The <a href="http://api.jquery.com/category/deferred-object/">jQuery Deferred</a> object is a powerful tool for managing callbacks and relaying the success or failure state of any synchronous or asynchronous javascript functions. This article will cover some of its most important methods and give examples of their use.</p>
+
+<h4>Creating a Deferred object</h4>
+<pre>
+var defer = new $.Deferred;</pre>
+
+<h4><code>deferred.resolve()</code></h4>
+<p>This <a href="http://api.jquery.com/deferred.resolve/">method</a> is used to resolve a Deferred object. When a Deferred object is resolved, any doneCallbacks added by <code>deferred.then()</code> or <code>deferred.done()</code> are called.</p>
+
+<h4><code>deferred.done()</code></h4>
+<p>This <a href="http://api.jquery.com/deferred.done/">method</a> is a callback handler that is called when the Deferred object is resolved. This is a key tool for chaining asynchronous methods.</p>
+
+<h4><code>jQuery.when(deferreds)</code></h4>
+<p>This <a href="http://api.jquery.com/jQuery.when/">method</a> provides a way to execute callback functions based on one or more objects, usually Deferred objects that represent asynchronous events.</p>
+<p>It is particularly useful as a listener for deferred.done events.</p>
+<pre>
+$.when(defer).done(function(){
+    // do something
+});</pre>
+<p>It accepts multiple Deferreds as arguments. The callback function is only executed once all the Deferred arguments are resolved.</p>
+<pre>
+$.when(d1, d2, d3).done(function(){
+    // do something
+});</pre>
+
+<h4>deferred.state()</h4>
+<p>This <a href="http://api.jquery.com/deferred.state/">method</a> accepts no arguments, but returns a string with the cuurent state of the Deferred object. The possible states are 'pending', 'resolved', or 'rejected'.</p>
+<p>I have used this method to test whether the object is pending, for example when you want to perform a function one time before resolving the Deferred object.</p>
+<pre>
+if (defer.state() === 'pending') {
+    var func = function() {
+        // do something
+        defer.resolve();
+    }
+}</pre>
+
+<h4>Deferreds and ajax</h4>
+<p>Since the <code>jQuery.get</code> method returns a jqXHR object, which is derived from a Deferred, you can attach a success and failure callback using the <code>deferred.done()</code> and <code>deferred.fail()</code> methods.</p>
+<pre>
+$.get('test.html')
+    .done(function() {
+        // success! do something
+    })
+    .fail(function() {
+        // fail. do something
+    });</pre>
+
+<h4>Putting it all together</h4>
+<p>Although I have not covered all the methods of the Deferred object here, we can still put together some fairly complex chaining of asynchronous methods using the methods above. In the hypothetical example below, we only want to get <code>page.html</code> if it hasn't been loaded before. We use a test for the loadPage Deferred object's state to determine if it has been resolved. If not, the <code>getPage()</code> function is called, and on success the loadPage Deferred object is resolved. We also initialized a callback function to run when the loadPage object is resolved.</p>
+<pre>
+var loadPage = new $.Deferred;
+
+var getPage = function() {
+    $.get('page.html')
+        .done(function(data) {
+            $('body').append(data);
+            loadPage.resolve();
+        })
+        .fail(function() {
+            alert('page.html failed to load');
+        });
+}
+
+var initPageLoad = function() {
+    if (loadPage.state() == 'pending') {
+        getPage();
+    }
+    $.when(loadPage).done(function() {
+        // do something with the loaded page
+    });
+}
+
+$(document).on('click', '.btn', function(e) {
+    e.preventDefault();
+    initPageLoad();
+});</pre>

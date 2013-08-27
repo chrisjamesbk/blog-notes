@@ -1,9 +1,25 @@
+<p>In June, I went to Portland, OR to attend the jQuery Conference. Amongst the many things I took away from the event, the overarching theme seemed to be modular (object oriented) javascript. As a "SMACSS guy", I've long been a convert to modular CSS, but modular javascript wasn't something I'd read much about. Since then I've fully embraced the concept, and my code is cleaner, more maintainable and easier to understand.</p>
+<p>I wanted to share a couple of great articles for anyone else looking to enhance their javascript code. They should give you a nice background into the subject, as well as a few examples to go away and hack around with.</p>
+
+<h3><a href="http://rmurphey.com/blog/2009/10/15/using-objects-to-organize-your-code/">Using Objects to Organize Your Code - Rebecca Murphey</a></h3>
+<p>This article by Rebecca Murphey is a great introduction to writing object-oriented javascript. She describes in easy-to-follow steps, targeted at novice-to-intermediate level javascript developers, how to transition from simple jQuery snippets to clear, well-organized javascript modules using the object literal pattern. Of particular note is how Murphey talks about the need to "think at the outset about what your code will do and what pieces need to be in place in order for you to do it" and she outlines a step in her process of "Scaffolding the Object" which helps to make the rest of her tutorial clear and concise.</p>
+
+<h3><a href="http://alistapart.com/article/the-design-of-code-organizing-javascript">The Design of Code: Organizing JavaScript - Anthony Colangelo</a></h3>
+<p>Colangelo's article for A List Apart expands Murphey's writing on the object literal pattern, introducing the module pattern and explaining how it increases the maintainability and reusability of his code. He talks a lot about how this decoupling of code into independent methods and properties within a module is great for building solid systems architecture. He also outlines the process of wrapping modules inside a jQuery plugin, thereby increasing reusability, providing robust options and exposing a well-crafted API. Doing so can also provide helpful cues to other developers about the nature of your module - improving the "developer interface".</p>
+<p>Although this article is a nice introduction to the jQuery plugin module pattern, I would strongly recommend supplementing your understanding by examining the code of <a href="https://github.com/acolangelo/jPanelMenu/blob/master/jquery.jpanelmenu.js">jPanelMenu</a>, the plugin that Colangelo authored and mentions in the article. You'll see a more "real life" implementation of the techniques described in the plugin.</p>
+<p>The pattern Colangelo describes is now my go-to for writing modular javascript. For more advanced reading on the subject, I also recommend Addy Osmani's book on javascript patterns, and in particular the chapter on the <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">module pattern</a>.</p>
+
+
+
+
+
+javascript enlightment - cody lindley
+awesome book for js noobs.
+
+
 tl;dr;
 
 Modularise: write small modules that do only one thing, and compose them together to do more complex stuff.
-
-
-
 
 
 Module patterns:
@@ -11,6 +27,11 @@ Beginners guides:
 http://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
 http://www.impressivewebs.com/my-current-javascript-design-pattern/
 
+http://markdalgleish.com/2011/05/creating-highly-configurable-jquery-plugins/
+
+http://learn.jquery.com/plugins/basic-plugin-creation/
+
+http://net.tutsplus.com/tutorials/javascript-ajax/the-basics-of-object-oriented-javascript/
 
 jQuery plugin patterns:
 http://coding.smashingmagazine.com/2011/10/11/essential-jquery-plugin-patterns/
@@ -77,6 +98,12 @@ http://jquerysbestfriends.com/#slide59
         });
     };
 </script>
+
+
+
+Prototype:
+http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/
+http://ericleads.com/2013/02/fluent-javascript-three-different-kinds-of-prototypal-oo/
 
 
 
@@ -163,6 +190,8 @@ http://addyosmani.com/writing-modular-js/
 
 Pretty good intro to require.js slides:
 http://www.tagneto.org/talks/jQueryRequireJS/jQueryRequireJS.pdf
+
+http://simonsmith.io/modular-html-components-with-requirejs/
 
 
 
