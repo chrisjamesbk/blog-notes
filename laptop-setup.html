@@ -22,3 +22,6 @@ GIT
 download: http://git-scm.com/downloads
 configure: https://help.github.com/articles/set-up-git
 generate ssh key: https://help.github.com/articles/generating-ssh-keys
+
+$ git config --global push.default simple 
+- simple = like upstream (push the current branch to its upstream branch), but refuses to push if the upstream branch's name is different from the local one
