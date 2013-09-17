@@ -3,7 +3,7 @@
 	[
 		"Vintage"
 	],
-	"scroll_past_end": false,
+	"scroll_past_end": true, // prevents extra-text-selection-at-bottom-of-page bug
 	"translate_tabs_to_spaces": true,
 	"word_wrap": "true"
 }

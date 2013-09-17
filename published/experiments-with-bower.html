@@ -1,0 +1,73 @@
+<blockquote>
+    <p>Bower copies packages from Git endpoints into your project, along with their dependencies. That is all.</p>
+    <cite><a href="http://www.kendoui.com/blogs/teamblog/posts/13-05-21/bower-ftw.aspx">Burke Holland, Kendo UI</a></cite>
+</blockquote>
+<p>I recently started experimenting with the package manager <a href="http://bower.io/">Bower</a> and have found it to be a useful tool in my development workflow. It is a simple tool that performs its function very well. Per the above quote, Bower simply enables you to install packages (javascript libraries, css bootstraps, etc) very quickly via the command line into your project directory. This post is a guide to getting started with Bower.</p>
+
+<h3>Installing Bower</h3>
+<p>You can either install Bower on it's own using npm:</p>
+<pre>
+$ npm install -g bower</pre>
+<p>Or it also comes pre-packaged with <a href="http://yeoman.io/">Yeoman</a>, which you also install using npm:</p>
+<pre>
+$ npm install -g yo</pre>
+<p>The <code>-g</code> ensures that Bower is installed globally.</p>
+
+<h3>Installing Packages</h3>
+<p>Installing packages is very simple with Bower (that's the whole point, I guess). First, navigate to your project directory. Now tell Bower to install any packages you require for your project. For this example, we're going to install the packages required to build an ember application. Let's start by installing Ember itself and it's dependencies:</p>
+<pre>
+$ bower install ember</pre>
+<p>That's it! Have a look in your project directory, and you'll see a folder called <code>bower_components</code>. Inside here you'll see <code>ember</code> and it's two key dependencies, <code>jquery</code> and <code>handlebars</code>.</p>
+<p>Now let's download a few other packages that we know we'll need:</p>
+<pre>
+$ bower install bootstrap
+$ bower install underscore
+$ bower install requirejs</pre>
+<p>One thing to notice is that Bower installs the latest versions of these libraries by default. But let's say we need to support IE8 with our project. jQuery dropped support for IE8 with v2.0, so we will need version 1.9 for this project. With Bower, simply install the version that you need and it will overwrite the current version installed:</p>
+<pre>
+$ bower install jquery#1.9.1</pre>
+<p>To see a list of the packages you have installed, in a handy dependency tree view, use the command <code>bower ls</code>:</p>
+<pre>
+$ bower ls<br/>
+bower check-new     Checking for new versions of the project dependencies..
+├─┬ bootstrap#3.0.0 extraneous
+│ └── jquery#1.9.1 (2.0.3 available)
+├─┬ ember#1.0.0 extraneous
+│ ├── handlebars#1.0.0
+│ └── jquery#1.9.1 (2.0.3 available)
+├── jquery#1.9.1 extraneous (latest is 2.0.3)
+├── requirejs#2.1.8 extraneous
+└── underscore#1.5.2 extraneous</pre>
+
+<h3>Finding Packages</h3>
+<p>If you don't know the exact name of the package you are trying to download, or simply want to search for which packages are available, Bower has a package registry that you can search from the command line.</p>
+<pre>
+$ bower search [package name]</pre>
+
+<h3>Create a Bower json file</h3>
+<p>Once you have all your packages installed, it's time to create a <code>bower.json</code> file for your project. You do this by simply running:</p>
+<pre>
+$ bower init</pre>
+<p>Unless you want to add additional information, hit return several times to use the default options for the json file. Once the initialization is complete, you'll see a <code>bower.json</code> file in your project's root directory. The important thing to note in this file is the list of all the dependencies for your project. If you wanted to create a similar project with the same dependencies, you would simply copy this json file into a new project directory, and run <code>$ bower install</code>. Bower would sutomatically download all the dependencies for your new project.</p>
+
+<h3>Changing the bower_components directory</h3>
+<p>If you are like me, you won't like the fact that Bower saves the installed packages into a directory called <code>bower_components</code>. I personally like these packages to be included in a <code>js/libs</code> directory. This is simple to achieve.</p>
+<p>First, create a file named <code>.bowerrc</code> in your project's root directory (note, the . prefix means this is a hidden file).</p>
+<p>Add the following code to your <code>.bowerrc</code> file:</p>
+<pre>
+{
+    "directory" : "js/libs"
+}</pre>
+<p>Now run the following command and your directory structure will be updated. Note that the <code>bower_components</code> folder will remain in your project directory, but it is now safe to delete it.</p>
+<pre>
+$ bower install</pre>
+
+<h3>That's all folks</h3>
+<p>As you can see, Bower is a powerful little tool that can help streamline your workflow for setting up new projects. There is plenty of information not covered here such as registering your own packages, but this should be enough info to get you started.</p>
+
+<h3>List of Resources</h3>
+<ul>
+    <li><a href="http://egghead.io/lessons/bower-introduction-and-setup">http://egghead.io/lessons/bower-introduction-and-setup</a></li>
+    <li><a href="http://net.tutsplus.com/tutorials/tools-and-tips/meet-bower-a-package-manager-for-the-web/">http://net.tutsplus.com/tutorials/tools-and-tips/meet-bower-a-package-manager-for-the-web/</a></li>
+    <li><a href="http://www.kendoui.com/blogs/teamblog/posts/13-05-21/bower-ftw.aspx">http://www.kendoui.com/blogs/teamblog/posts/13-05-21/bower-ftw.aspx</a></li>
+</ul>

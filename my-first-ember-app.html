@@ -1,0 +1,100 @@
+guide:
+http://net.tutsplus.com/tutorials/javascript-ajax/getting-into-ember-js/
+http://net.tutsplus.com/tutorials/javascript-ajax/getting-into-ember-js-part-2/
+http://net.tutsplus.com/tutorials/javascript-ajax/getting-into-ember-js-part-3/
+http://net.tutsplus.com/tutorials/javascript-ajax/getting-into-ember-part-4/
+
+good tutorial: https://www.youtube.com/watch?v=1QHrlFlaXdI
+Building an Ember.js Application - Tom Dale
+
+
+Models:
+Models are an object representation of the data your application will use.
+It could be a simple array or data dynamically retrieved from a RESTful JSON API, via an Ajax request.
+
+
+Controllers:
+Controllers are typically used to store and represent model data and attributes.
+They act like a proxy, giving you access to the model’s attributes and allowing templates to access them to dynamically render the display. This is why a template will always be connected to a controller.
+
+The main thing to remember is that, while a model retrieves data, a controller is what you’ll use to programmatically expose that data to different parts of your application.
+
+You can also store other application properties that need to persist but don’t need to be saved to a server.
+
+
+Views:
+Views in Ember.js are meant to manage events around user interaction and translate them into events that have meaning within your application.
+So, if a user clicks on a button to delete an employee, the view is responsible for interpreting that native browser click event and processing it appropriately within the context your application’s current state.
+
+
+Naming Conventions:
+http://emberjs.com/guides/concepts/naming-conventions/
+The way that you define and name your routes (and resources) impacts the naming of your controllers, models, views and templates.
+
+For example, if I create a route, called “employees”:
+<pre>App.Router.map( function() {
+   this.resource( 'employees' );
+});</pre>
+I would then name my components, like this:
+<pre>
+Route object: App.EmployeesRoute
+Controller: App.EmployeesController
+Model: App.Employee
+View: App.EmployeesView
+Template: employees</pre>
+
+When a user navigates to “/employees” in your application, Ember will look for the following objects:
+App.EmployeesRoute
+App.EmployeesController
+the employees template
+If it doesn’t find them, it will create an instance of each but simply won’t render anything, since you haven’t specified a model to derive data from or a template to display the data with.
+
+The naming conventions allow Ember to link this route’s resources (e.g.: the controller with data) to the template specified by the same name. This gives the template access to the data exposed by the controller so it can render it using Handlebars’ directives.
+
+
+Routing:
+Remember that routes are used to manage the resources associated with a specific URL within the application, and allows Ember to track the various states of individual pages. The URL is the key identifier that Ember uses to understand which application state needs to be presented to the user.
+
+The root route is created by default in Ember. I could’ve also explicitly defined the route this way:
+<pre>App.Router.map( function() {
+    this.resource( 'index', { path: '/' } ); // Takes us to /
+});</pre>
+
+Your application may also have nested URLs, like /account/new
+For these instances, you can define Ember resources that allow you to group routes together, like so:
+<pre>App.Router.map( function() {
+   this.resource( 'accounts',  function() {
+     this.route( 'new' ); 
+   });
+});</pre>
+In this example, we used the resource() method to group the routes together and the route() method to define the routes within the group. The general rule of thumb is to use resource() for nouns (Accounts and Account would both be resources even when nested) and route() for modifiers: (verbs like new and edit or adjectives like favorites and starred).
+
+Apart from grouping the routes, Ember builds internal references to the controllers, routes and templates for each of the group routes specified. This is what it would look like (and again it touches on Ember’s naming conventions):
+
+"/accounts":
+Controller: AccountsController
+Route: AccountsRoute
+Template: accounts (yes it’s lowercase)
+
+"/accounts/new":
+Controller: AccountsNewController
+Route: AccountsNewRoute
+Template: accounts/new
+
+
+
+Instantiating an app:
+<pre>App = Ember.Application.create({});</pre>
+The Ember guides do an excellent job of outlining specifically what instantiating an Ember application object does:
+It sets your application’s namespace. All of the classes in your application will be defined as properties on this object (e.g. App.PostsView and App.PostsController). This helps to prevent polluting the global scope.
+It adds event listeners to the document and is responsible for sending events to your views.
+It automatically renders the application template, the root-most template, into which your other templates will be rendered.
+It automatically creates a router and begins routing, based on the current URL.
+
+* App is not a keyword in Ember. It’s a normal global variable that you’re using to define the namespace and could be any valid variable name. From what I’ve seen, though, the variable name, App, is a commonly used convention in most Ember apps and is actually recommended to make it easier to copy and paste much of the sample code being created in the community.
+
+
+
+
+
+http://emberjs.com/guides/getting-started/planning-the-application/

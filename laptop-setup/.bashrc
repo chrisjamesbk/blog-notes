@@ -1,5 +1,6 @@
 alias gp='git pull'
 alias gs='git status'
+alias home='cd ~/'
 alias drop='cd ~/Dropbox/'
 alias sites='cd ~/Dropbox/Sites'
 alias free='cd ~/Dropbox/Sites/Freelance'
