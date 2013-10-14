@@ -1,0 +1,40 @@
+mostly follow this:
+
+http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/
+
+don't forget to do (from video):
+(~/.ssh) $ ssh-add ~/.ssh/id_rsa_cjbk
+
+
+vi ~/.ssh/config
+
+#Default GitHub
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+#cjbk GitHub
+Host github-cjbk
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_cjbk
+
+
+instead of Step 4, this is how you clone a repo from cjbk Github:
+
+$ git clone git@github.com:chrisjamesbk/blog-notes.git
+$ cd blog-notes/
+$ vi .git/config
+
+change remote origin to:
+[remote "origin"]
+  url = git@github-cjbk:chrisjamesbk/blog-notes.git
+
+
+final step, change repo username/email:
+$ git config user.name "Chris James"
+$ git config user.email "chrisjamesbk@gmail.com"
+
+and test:
+$ vi .git/config
