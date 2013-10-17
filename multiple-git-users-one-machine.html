@@ -1,3 +1,5 @@
+<p>I recently started a new job that required me to create a new GitHub account for accessing the company repos. However, I was still keen to be able to use my personal GitHub account on the same machine, for accessing my own repos and other open source projects.</p>
+
 mostly follow this:
 
 http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/
@@ -38,3 +40,83 @@ $ git config user.email "chrisjamesbk@gmail.com"
 
 and test:
 $ vi .git/config
+
+
+
+<p>Assumes you have personal GitHub account up and running...</p>
+
+<pre>
+// Create a new SSH key
+// When prompted, save the key with a unique name so it doesn't overwrite your personal key
+$ ssh-keygen -t rsa -C "chris@work.com"
+Enter file in which to save the key: ~/.ssh/id_rsa_WORK
+
+// copy your new key
+$ pbcopy &lt; ~/.ssh/id_rsa_WORK.pub</pre>
+
+<p>Follow <a href="https://help.github.com/articles/generating-ssh-keys#step-3-add-your-ssh-key-to-github">these steps</a> to add your new key to your work GitHub account</p>
+
+<pre>
+// Create a new config file
+$ vi  ~/.ssh/config
+
+// Edit your config file so it looks something like this
+#Default GitHub
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+Host github-WORK
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_WORK</pre>
+
+<p>This tutorial assumes you will now be cloning your work repositories to your machine. If you are creating new repos from scratch, <a href="http://net.tutsplus.com/tutorials/tools-and-tips/how-to-work-with-github-and-multiple-accounts/">this guide</a> will help you.</p>
+
+<pre>
+// cd to the directory where you want the repo to go
+// Clone the repo
+$ git clone git@github-WORK:work/repo.git
+
+$ cd repo
+
+// Change the git config for your repo (as opposed to globally)
+// This changes the config for this repo, without changing it system wide
+$ git config user.name "Chris James"
+$ git config user.email "chris@work.com"
+
+// Check your config is set up correctly
+$ vi .git/config
+
+// Your config file for this repo should now look something like this
+[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+    ignorecase = true
+    precomposeunicode = false
+[remote "origin"]
+    url = git@github-WORK:work/repo.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+[user]
+    name = Chris James
+    email = chris@work.com</pre>
+
+<p>You should now be able to pull down and push up changes to your heart's content, with both accounts. The only change in your workflow will be that with each new work repo that you clone, you need to set the local config for that repo.</p>
+
+<p>EDIT: After using this workflow for some time, I suddenly was unable to push up changes to my work GitHub account, per the error below:</p>
+
+<pre>
+$ git push origin master
+ERROR: Permission to work/repo.git denied to chrisjamesbk.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.</pre>
+
+<p>I haven't been able to figure out the specific reasons for this, but I did find a workaround. In Github, simply add your personal GitHub user as a <a href="https://help.github.com/articles/how-do-i-add-a-collaborator">collaborator</a> on the specific repo.</p>
