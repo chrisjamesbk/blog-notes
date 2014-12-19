@@ -1,0 +1,20 @@
+<p>Sometimes when you need to examine the results of a JSON response, using your browser's developer tools console just won't cut the mustard. In such a case, a good alternative would be to copy the JSON object from the console and to view it in your text editor. It's not quite as easy as 'CMD + C', 'CMD + V' though, so here's a quick primer. Specifically, these instructions are for copy the response from Chrome's Developer Tools console to Sublime text 2.</p>
+
+<p>First, we need to copy the JSON object from the console:</p>
+
+<pre>
+// where res.data is the JSON object
+copy(JSON.stringify(res.data))</pre>
+
+<p>Now, if you don't already have it, you'll need to install the Sublime Text 2 package, 'Pretty JSON'. I got it via Package Control. Read more about Package control and installing new packages <a href="http://chrisjamesbk.tumblr.com/post/43160359016/sublime-text-2">here</a>.</p>
+
+<p>Once you have the package installed:</p>
+
+<ul>
+    <li>Paste the copied object in your editor</li>
+    <li>Press 'CMD + SHIFT + P' to open your package manager</li>
+    <li>Search for 'JSON'</li>
+    <li>Select 'Pretty JSON: Reformat (pretty print) JSON'</li>
+</ul>
+
+<p>That's it! You could also use the shortcut code for reformatting with Pretty JSON, which is '^ + CMD + J'</p>

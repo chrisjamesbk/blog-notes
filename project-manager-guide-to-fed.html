@@ -1,0 +1,55 @@
+- front end (client side) vs back end (server side)
+- separation of concerns
+  -- content (HTML)
+  -- presentation (CSS)
+  -- behavior (javascript)
+- browsers
+  -- over time, front end standards change (e.g. HTML5, CSS3)
+  -- modern browsers iterate quickly (e.g. Chrome 33), and auto-update
+  -- legacy browsers are problem because of their age (e.g. ie8 released 2009), so aren't built to latest standards
+  -- graceful degradation vs progressive enhancement - we want to use the latest standards (speed, efficiency), but need to consider fallbacks
+- angular
+  -- javascript framework by google
+  -- much of "traditional" back-end functionality now at application level
+  -- back-end is the API. It serves the app with data 'endpoints' (JSON)
+  -- Angular helps us get the data, manipulate it as necessary, create 'models' with it, and update the 'views' with the models
+  -- most powerful aspect is that data can be shared across the application
+  -- we also save data permanently by transmitting it back to the API
+- html
+  -- DOM - the HTML you write is parsed by the browser and turned into the DOM
+  -- javascript can manipulate the DOM
+  -- html elements (div, h1, p, section) can be further identified by using ids and classes e.g. <div class="header"></div>
+  -- js can target elements by their id/class, e.g. document.getElementById('header');
+  -- angular uses templates to help render views e.g. confirmation number is {{confirmation.number}}, output depends on the model which is unique to the user
+- css
+  -- also tied to html ids and classes, e.g. .header {}
+  -- modular, shared components, e.g. buttons (save time, easier to maintain, less code)
+  -- SASS pre-processor (shared mixins, cross-browser hacks, grid system)
+- responsive design
+  -- new(ish) concept, previously different versions of sites for mobile
+  -- makes for a more coherent experience for users
+  -- forces maintenance of standards across all platforms
+  -- screen size is most important consideration
+  -- also devices, touch vs size vs age vs different standards, even more fractured than browser market
+  -- css media queries
+  -- javascript can also be targeted according to screen size/browser capabilities/touch (via Modernizr)
+  -- ability to target browsers or devices but this is frowned upon (not stable, can't predict future (new tech, devices change)), exception would be for something like Passbook, only available on iDevices
+  -- performance issue
+     -- all the css/scripts to all the devices, help from caching
+     -- image sizes (retina vs large screen vs small screen)
+- design (what we like)
+  -- clean psds (grouped layers, named layers, no extraneous layers)
+  -- consistency (design elements, color scheme, type, etc)
+  -- mobile first? (we develop mobile first, consistency of design at least)
+
+
+
+
+
+
+Design and Development Standards https://github.com/Snugug/north
+  -- Responsive design: https://github.com/Snugug/north#responsive-web-design
+What is the DOM? http://css-tricks.com/dom/
+Girl Develop It: http://www.girldevelopit.com/chapters/new-york
+  -- intro to web concepts: http://www.girldevelopit.com/assets/web-concepts/index.html#/
+  -- more materials: http://www.girldevelopit.com/materials

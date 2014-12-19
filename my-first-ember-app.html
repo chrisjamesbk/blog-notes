@@ -7,6 +7,8 @@ http://net.tutsplus.com/tutorials/javascript-ajax/getting-into-ember-part-4/
 good tutorial: https://www.youtube.com/watch?v=1QHrlFlaXdI
 Building an Ember.js Application - Tom Dale
 
+NEW GUIDE: http://ember.vicramon.com/
+
 
 Models:
 Models are an object representation of the data your application will use.
@@ -64,7 +66,7 @@ Your application may also have nested URLs, like /account/new
 For these instances, you can define Ember resources that allow you to group routes together, like so:
 <pre>App.Router.map( function() {
    this.resource( 'accounts',  function() {
-     this.route( 'new' ); 
+     this.route( 'new' );
    });
 });</pre>
 In this example, we used the resource() method to group the routes together and the route() method to define the routes within the group. The general rule of thumb is to use resource() for nouns (Accounts and Account would both be resources even when nested) and route() for modifiers: (verbs like new and edit or adjectives like favorites and starred).

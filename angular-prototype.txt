@@ -1,0 +1,67 @@
+Pros
+- Speedier development
+- Data management, load it when you need it, easy editing in json
+- Templating, ng-repeat, data in json
+- State management, e.g. loggedIn, localStorage
+- $routeParams
+
+Cons
+- Maintainability, e.g. by designers/non-angular developers
+- Requires server to run
+- Requires build when changes made
+
+
+
+Other considerations
+- Single viewport, 1280 x 650, based on PSDs to allow for easy asset exporting, NOT responsive
+- Fairly heavy reliance on jQuery, including plugins = speed
+- Therefore reliance on $scope.$on('$destroy')
+- I often used the controller/directive structure more-or-less as a way of modularizing jquery, and that's ok for a prototype, see comedy.js, homepage-carousel.js
+- Used images where I could, but some things it makes sense to code, epecially if you know they will likely be iterated on (e.g. series list), or where interation is key (e.g. carousels, series detail)
+- Use CoreCtrl to handle global elements, e.g. modals, notifications, drawer (via pubSub if trigger is in other controller or directive)
+- New feature might destabilize prototype, use a new branch, e.g. 15 seconds
+- Rememeber users will use mouse (not trackpad), and behavior is not totally reliable, try and account for random clicks, page refresh, scrolling, etc
+
+
+
+Workflow
+- 8 day schedule, plan was to get the majority of work finished in 5 days, appease difficult client, allowed time for tweaking and fixing bugs, support during user tests but changes requested were minimal
+
+
+
+
+
+Speedier Development
+- yo prototype-angular (bootstrapped angular app, runs npm/bower install, single 'coreApp', jQuery, pubSubService, windowService, Modernizr, grunticon, grunt server, grunt build)
+- ng-click, ng-hide, ng-repeat (quicker than using jQuery)
+
+
+
+Data management
+- use json files for holding data, easy for anybody to update copy, states, etc
+- simple: add data to ResourceBundle and package in the app
+(- complex: load json files when you need them, cache for performance) - no requirement for build when data changed
+
+
+
+Templating
+- DRY, only have your markup for header in one place
+- index.html contains your core site components (header, footer, modals), no need to include them in multiple templates
+- ng-include - reuse static components across pages
+- directives - reuse components that have built-in functionality
+- ng-repeat makes creating and editing repeated content a cinch
+
+
+
+State management
+- makes it easy to change and maintain states, e.g. is logged in, has viewed x
+- persist these states with localStorageService, allows for unexpected user behavior e.g. page refresh
+- clear states on 'logout' or '/reset'
+
+
+
+$routeParams
+- display content on page depending on the route, e.g. '/series/homeland', '/series/houseoflies'
+- e.g. '/series/:category'
+- cleaner than '?category=xxx'
+- not reliant upon a specific flow
