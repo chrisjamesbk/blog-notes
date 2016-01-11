@@ -15,3 +15,5 @@
 
 [TOOLS/TESTING: Chrome Dev Tools](https://developers.google.com/web/tools/chrome-devtools/)
 [TOOLS/TESTING: Big Rig](https://aerotwist.com/blog/bigrig/)
+
+[MORE: Essential Javascript Links](https://github.com/ericelliott/essential-javascript-links#essential-javascript-links)
